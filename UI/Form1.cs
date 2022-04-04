@@ -305,7 +305,7 @@ namespace UI
             if (cz == true)
             {
                 if (z < 360) // 360 yani 1 tur sonunda 0 a döner
-                    z += 2; // modeli 2 saniyede bir tekrar oluşturur, sayı arttıkça fps düşer
+                    z += 2; // modeli 2 saniyede bir tekrar oluşturur, sayı arttıkça fps düşer.
                 else
                     z = 0;
                 lblz.Text = z.ToString();
