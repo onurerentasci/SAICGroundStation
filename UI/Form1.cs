@@ -246,7 +246,8 @@ namespace UI
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.saat.Text = String.Format("{0:hh\\:mm\\:ss\\:fff}", stopWatch.Elapsed);
+            this.saat.Text = String.Format("{0:hh\\:mm\\:ss\\:fff}", stopWatch.Elapsed); // status altındaki uptime, saat/dakika/saniye/salise
+                                                                                         // formatlama sayesinde salise 3 hanede sınırlı
         }
 
         private void saat_Click(object sender, EventArgs e)
@@ -258,7 +259,7 @@ namespace UI
         {
             stopWatch = new Stopwatch();
             timerX.Interval = 100;
-            GL.ClearColor(Color.LightBlue);
+            GL.ClearColor(Color.LightBlue); // 3d nesnenin arkaplan rengi // açık mavi
 
         }
 
