@@ -287,24 +287,24 @@ namespace UI
         {
             if (cx == true)
             {
-                if (x < 360)
-                    x += 2;
+                if (x < 360) // 360 yani 1 tur sonunda 0 a döner
+                    x += 2; // modeli 2 saniyede bir tekrar oluşturur, sayı arttıkça fps düşer
                 else
                     x = 0;
                 lblx.Text = x.ToString();
             }
             if (cy == true)
             {
-                if (y < 360)
-                    y += 2;
+                if (y < 360)  // 360 yani 1 tur sonunda 0 a döner
+                    y += 2;  // modeli 2 saniyede bir tekrar oluşturur, sayı arttıkça fps düşer
                 else
                     y = 0;
                 lbly.Text = y.ToString();
             }
             if (cz == true)
             {
-                if (z < 360)
-                    z += 2;
+                if (z < 360) // 360 yani 1 tur sonunda 0 a döner
+                    z += 2; // modeli 2 saniyede bir tekrar oluşturur, sayı arttıkça fps düşer
                 else
                     z = 0;
                 lblz.Text = z.ToString();

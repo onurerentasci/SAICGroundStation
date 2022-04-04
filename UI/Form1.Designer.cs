@@ -417,7 +417,7 @@
             this.GYRO.Controls.Add(this.glControl1);
             this.GYRO.Location = new System.Drawing.Point(253, 0);
             this.GYRO.Name = "GYRO";
-            this.GYRO.Size = new System.Drawing.Size(392, 998);
+            this.GYRO.Size = new System.Drawing.Size(431, 998);
             this.GYRO.TabIndex = 1;
             // 
             // glControl1
@@ -426,7 +426,7 @@
             this.glControl1.Location = new System.Drawing.Point(9, 13);
             this.glControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.glControl1.Name = "glControl1";
-            this.glControl1.Size = new System.Drawing.Size(250, 250);
+            this.glControl1.Size = new System.Drawing.Size(300, 300);
             this.glControl1.TabIndex = 0;
             this.glControl1.VSync = false;
             this.glControl1.Load += new System.EventHandler(this.glControl1_Load_1);
@@ -434,7 +434,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(322, 81);
+            this.button1.Location = new System.Drawing.Point(374, 89);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(30, 30);
             this.button1.TabIndex = 1;
@@ -444,7 +444,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(322, 141);
+            this.button5.Location = new System.Drawing.Point(374, 149);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(30, 30);
             this.button5.TabIndex = 1;
@@ -454,7 +454,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(322, 201);
+            this.button6.Location = new System.Drawing.Point(374, 209);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(30, 30);
             this.button6.TabIndex = 1;
@@ -470,7 +470,7 @@
             // 
             this.lblx.AutoSize = true;
             this.lblx.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblx.Location = new System.Drawing.Point(275, 85);
+            this.lblx.Location = new System.Drawing.Point(327, 93);
             this.lblx.Name = "lblx";
             this.lblx.Size = new System.Drawing.Size(19, 20);
             this.lblx.TabIndex = 2;
@@ -481,7 +481,7 @@
             // 
             this.lbly.AutoSize = true;
             this.lbly.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbly.Location = new System.Drawing.Point(275, 145);
+            this.lbly.Location = new System.Drawing.Point(327, 153);
             this.lbly.Name = "lbly";
             this.lbly.Size = new System.Drawing.Size(19, 20);
             this.lbly.TabIndex = 2;
@@ -492,7 +492,7 @@
             // 
             this.lblz.AutoSize = true;
             this.lblz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblz.Location = new System.Drawing.Point(275, 205);
+            this.lblz.Location = new System.Drawing.Point(327, 213);
             this.lblz.Name = "lblz";
             this.lblz.Size = new System.Drawing.Size(19, 20);
             this.lblz.TabIndex = 2;
