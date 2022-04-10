@@ -235,6 +235,10 @@ namespace UI
             string[] paket; 
             string sonuc = serialPort1.ReadLine();
             paket = sonuc.Split('*');
+            lblxx.Text = paket[0];
+            lblyy.Text = paket[1];
+            lblyy.Text = paket[2];
+
 
             this.saat.Text = String.Format("{0:hh\\:mm\\:ss\\:fff}", stopWatch.Elapsed); // status altındaki uptime, saat/dakika/saniye/salise
                                                                                          // formatlama sayesinde salise 3 hanede sınırlı
@@ -355,6 +359,11 @@ namespace UI
         }
 
         private void BreakButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
