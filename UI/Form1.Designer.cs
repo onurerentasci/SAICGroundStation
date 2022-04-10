@@ -46,31 +46,32 @@
             this.saat = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.ConfigButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.BreakButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.DisconnectButton = new System.Windows.Forms.Button();
             this.ConnectButton = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.GYRO = new System.Windows.Forms.Panel();
-            this.glControl1 = new OpenTK.GLControl();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.timerX = new System.Windows.Forms.Timer(this.components);
-            this.lblx = new System.Windows.Forms.Label();
-            this.lbly = new System.Windows.Forms.Label();
+            this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
             this.lblz = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lbly = new System.Windows.Forms.Label();
+            this.lblx = new System.Windows.Forms.Label();
+            this.ButtonZ = new System.Windows.Forms.Button();
+            this.ButtonY = new System.Windows.Forms.Button();
+            this.ButtonX = new System.Windows.Forms.Button();
+            this.glControl1 = new OpenTK.GLControl();
+            this.timerX = new System.Windows.Forms.Timer(this.components);
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -144,7 +145,6 @@
             this.progressBar1.Size = new System.Drawing.Size(77, 23);
             this.progressBar1.TabIndex = 2;
             this.progressBar1.Value = 30;
-            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // label8
             // 
@@ -243,7 +243,6 @@
             this.saat.Size = new System.Drawing.Size(104, 18);
             this.saat.TabIndex = 1;
             this.saat.Text = "00:00:00:000";
-            this.saat.Click += new System.EventHandler(this.saat_Click);
             // 
             // label4
             // 
@@ -260,7 +259,7 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.button4);
+            this.panel4.Controls.Add(this.ConfigButton);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 372);
@@ -268,16 +267,16 @@
             this.panel4.Size = new System.Drawing.Size(248, 114);
             this.panel4.TabIndex = 3;
             // 
-            // button4
+            // ConfigButton
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button4.Location = new System.Drawing.Point(58, 53);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(121, 40);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Config";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.ConfigButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.ConfigButton.Location = new System.Drawing.Point(58, 53);
+            this.ConfigButton.Name = "ConfigButton";
+            this.ConfigButton.Size = new System.Drawing.Size(121, 40);
+            this.ConfigButton.TabIndex = 1;
+            this.ConfigButton.Text = "Config";
+            this.ConfigButton.UseVisualStyleBackColor = true;
+            this.ConfigButton.Click += new System.EventHandler(this.ConfigButton_Click);
             // 
             // label3
             // 
@@ -294,7 +293,7 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.button3);
+            this.panel3.Controls.Add(this.BreakButton);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 252);
@@ -302,17 +301,17 @@
             this.panel3.Size = new System.Drawing.Size(248, 120);
             this.panel3.TabIndex = 2;
             // 
-            // button3
+            // BreakButton
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.Location = new System.Drawing.Point(58, 64);
-            this.button3.Name = "button3";
-            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button3.Size = new System.Drawing.Size(121, 42);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Break";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.BreakButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.BreakButton.Location = new System.Drawing.Point(58, 64);
+            this.BreakButton.Name = "BreakButton";
+            this.BreakButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.BreakButton.Size = new System.Drawing.Size(121, 42);
+            this.BreakButton.TabIndex = 1;
+            this.BreakButton.Text = "Break";
+            this.BreakButton.UseVisualStyleBackColor = true;
+            this.BreakButton.Click += new System.EventHandler(this.BreakButton_Click);
             // 
             // label2
             // 
@@ -326,7 +325,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Break";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel2
             // 
@@ -334,7 +332,7 @@
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.DisconnectButton);
             this.panel2.Controls.Add(this.ConnectButton);
             this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.label1);
@@ -344,27 +342,55 @@
             this.panel2.Size = new System.Drawing.Size(248, 198);
             this.panel2.TabIndex = 1;
             // 
-            // button2
+            // label13
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.Location = new System.Drawing.Point(126, 140);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 34);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Disconnect";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label13.Location = new System.Drawing.Point(12, 95);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(107, 20);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "Bound Rate";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label12.Location = new System.Drawing.Point(12, 56);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(99, 20);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "Serial Port";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(137, 95);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(94, 22);
+            this.textBox2.TabIndex = 3;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // DisconnectButton
+            // 
+            this.DisconnectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.DisconnectButton.Location = new System.Drawing.Point(126, 140);
+            this.DisconnectButton.Name = "DisconnectButton";
+            this.DisconnectButton.Size = new System.Drawing.Size(105, 34);
+            this.DisconnectButton.TabIndex = 2;
+            this.DisconnectButton.Text = "Disconnect";
+            this.DisconnectButton.UseVisualStyleBackColor = true;
+            this.DisconnectButton.Click += new System.EventHandler(this.DisconnectButton_Click);
             // 
             // ConnectButton
             // 
-            this.ConnectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.ConnectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.ConnectButton.Location = new System.Drawing.Point(11, 140);
             this.ConnectButton.Name = "ConnectButton";
             this.ConnectButton.Size = new System.Drawing.Size(105, 34);
             this.ConnectButton.TabIndex = 2;
             this.ConnectButton.Text = "Connect";
             this.ConnectButton.UseVisualStyleBackColor = true;
-            this.ConnectButton.Click += new System.EventHandler(this.button1_Click);
+            this.ConnectButton.Click += new System.EventHandler(this.ConnectButton_Click);
             // 
             // comboBox1
             // 
@@ -386,7 +412,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Session";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox1
             // 
@@ -408,17 +433,105 @@
             // GYRO
             // 
             this.GYRO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.GYRO.Controls.Add(this.gMapControl1);
             this.GYRO.Controls.Add(this.lblz);
             this.GYRO.Controls.Add(this.lbly);
             this.GYRO.Controls.Add(this.lblx);
-            this.GYRO.Controls.Add(this.button6);
-            this.GYRO.Controls.Add(this.button5);
-            this.GYRO.Controls.Add(this.button1);
+            this.GYRO.Controls.Add(this.ButtonZ);
+            this.GYRO.Controls.Add(this.ButtonY);
+            this.GYRO.Controls.Add(this.ButtonX);
             this.GYRO.Controls.Add(this.glControl1);
             this.GYRO.Location = new System.Drawing.Point(253, 0);
             this.GYRO.Name = "GYRO";
             this.GYRO.Size = new System.Drawing.Size(431, 998);
             this.GYRO.TabIndex = 1;
+            // 
+            // gMapControl1
+            // 
+            this.gMapControl1.Bearing = 0F;
+            this.gMapControl1.CanDragMap = true;
+            this.gMapControl1.EmptyTileColor = System.Drawing.Color.Navy;
+            this.gMapControl1.GrayScaleMode = false;
+            this.gMapControl1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.gMapControl1.LevelsKeepInMemory = 5;
+            this.gMapControl1.Location = new System.Drawing.Point(9, 335);
+            this.gMapControl1.MarkersEnabled = true;
+            this.gMapControl1.MaxZoom = 2;
+            this.gMapControl1.MinZoom = 2;
+            this.gMapControl1.MouseWheelZoomEnabled = true;
+            this.gMapControl1.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.gMapControl1.Name = "gMapControl1";
+            this.gMapControl1.NegativeMode = false;
+            this.gMapControl1.PolygonsEnabled = true;
+            this.gMapControl1.RetryLoadTile = 0;
+            this.gMapControl1.RoutesEnabled = true;
+            this.gMapControl1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.gMapControl1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.gMapControl1.ShowTileGridLines = false;
+            this.gMapControl1.Size = new System.Drawing.Size(300, 300);
+            this.gMapControl1.TabIndex = 3;
+            this.gMapControl1.Zoom = 0D;
+            this.gMapControl1.Load += new System.EventHandler(this.gMapControl1_Load);
+            // 
+            // lblz
+            // 
+            this.lblz.AutoSize = true;
+            this.lblz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblz.Location = new System.Drawing.Point(327, 213);
+            this.lblz.Name = "lblz";
+            this.lblz.Size = new System.Drawing.Size(19, 20);
+            this.lblz.TabIndex = 2;
+            this.lblz.Text = "0";
+            // 
+            // lbly
+            // 
+            this.lbly.AutoSize = true;
+            this.lbly.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbly.Location = new System.Drawing.Point(327, 153);
+            this.lbly.Name = "lbly";
+            this.lbly.Size = new System.Drawing.Size(19, 20);
+            this.lbly.TabIndex = 2;
+            this.lbly.Text = "0";
+            // 
+            // lblx
+            // 
+            this.lblx.AutoSize = true;
+            this.lblx.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblx.Location = new System.Drawing.Point(327, 93);
+            this.lblx.Name = "lblx";
+            this.lblx.Size = new System.Drawing.Size(19, 20);
+            this.lblx.TabIndex = 2;
+            this.lblx.Text = "0";
+            // 
+            // ButtonZ
+            // 
+            this.ButtonZ.Location = new System.Drawing.Point(374, 209);
+            this.ButtonZ.Name = "ButtonZ";
+            this.ButtonZ.Size = new System.Drawing.Size(30, 30);
+            this.ButtonZ.TabIndex = 1;
+            this.ButtonZ.Text = "Z";
+            this.ButtonZ.UseVisualStyleBackColor = true;
+            this.ButtonZ.Click += new System.EventHandler(this.ButtonZ_Click);
+            // 
+            // ButtonY
+            // 
+            this.ButtonY.Location = new System.Drawing.Point(374, 149);
+            this.ButtonY.Name = "ButtonY";
+            this.ButtonY.Size = new System.Drawing.Size(30, 30);
+            this.ButtonY.TabIndex = 1;
+            this.ButtonY.Text = "Y";
+            this.ButtonY.UseVisualStyleBackColor = true;
+            this.ButtonY.Click += new System.EventHandler(this.ButtonY_Click);
+            // 
+            // ButtonX
+            // 
+            this.ButtonX.Location = new System.Drawing.Point(374, 89);
+            this.ButtonX.Name = "ButtonX";
+            this.ButtonX.Size = new System.Drawing.Size(30, 30);
+            this.ButtonX.TabIndex = 1;
+            this.ButtonX.Text = "X";
+            this.ButtonX.UseVisualStyleBackColor = true;
+            this.ButtonX.Click += new System.EventHandler(this.ButtonX_Click);
             // 
             // glControl1
             // 
@@ -432,107 +545,9 @@
             this.glControl1.Load += new System.EventHandler(this.glControl1_Load_1);
             this.glControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.glControl1_Paint);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(374, 89);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "X";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(374, 149);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(30, 30);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "Y";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(374, 209);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(30, 30);
-            this.button6.TabIndex = 1;
-            this.button6.Text = "Z";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // timerX
             // 
             this.timerX.Tick += new System.EventHandler(this.timerX_Tick);
-            // 
-            // lblx
-            // 
-            this.lblx.AutoSize = true;
-            this.lblx.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblx.Location = new System.Drawing.Point(327, 93);
-            this.lblx.Name = "lblx";
-            this.lblx.Size = new System.Drawing.Size(19, 20);
-            this.lblx.TabIndex = 2;
-            this.lblx.Text = "0";
-            this.lblx.Click += new System.EventHandler(this.lblx_Click);
-            // 
-            // lbly
-            // 
-            this.lbly.AutoSize = true;
-            this.lbly.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbly.Location = new System.Drawing.Point(327, 153);
-            this.lbly.Name = "lbly";
-            this.lbly.Size = new System.Drawing.Size(19, 20);
-            this.lbly.TabIndex = 2;
-            this.lbly.Text = "0";
-            this.lbly.Click += new System.EventHandler(this.lblx_Click);
-            // 
-            // lblz
-            // 
-            this.lblz.AutoSize = true;
-            this.lblz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblz.Location = new System.Drawing.Point(327, 213);
-            this.lblz.Name = "lblz";
-            this.lblz.Size = new System.Drawing.Size(19, 20);
-            this.lblz.TabIndex = 2;
-            this.lblz.Text = "0";
-            this.lblz.Click += new System.EventHandler(this.lblx_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(137, 95);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(94, 22);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label12.Location = new System.Drawing.Point(12, 56);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(99, 20);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "Serial Port";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label13.Location = new System.Drawing.Point(12, 95);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(107, 20);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "Bound Rate";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // Form1
             // 
@@ -571,12 +586,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button ConfigButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button BreakButton;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button DisconnectButton;
         private System.Windows.Forms.Button ConnectButton;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label4;
@@ -595,9 +610,9 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel GYRO;
         private OpenTK.GLControl glControl1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ButtonZ;
+        private System.Windows.Forms.Button ButtonY;
+        private System.Windows.Forms.Button ButtonX;
         private System.Windows.Forms.Timer timerX;
         private System.Windows.Forms.Label lblx;
         private System.Windows.Forms.Label lblz;
@@ -605,7 +620,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private GMap.NET.WindowsForms.GMapControl gMapControl1;
+        private System.IO.Ports.SerialPort serialPort1;
     }
 }
 

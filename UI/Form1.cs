@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using System.IO.Ports;
 
 namespace UI
 {
@@ -214,27 +215,12 @@ namespace UI
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             
         }
 
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
         {
 
         }
@@ -246,17 +232,22 @@ namespace UI
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            string[] paket; 
+            string sonuc = serialPort1.ReadLine();
+            paket = sonuc.Split('*');
+
             this.saat.Text = String.Format("{0:hh\\:mm\\:ss\\:fff}", stopWatch.Elapsed); // status altındaki uptime, saat/dakika/saniye/salise
                                                                                          // formatlama sayesinde salise 3 hanede sınırlı
         }
 
-        private void saat_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
+            string[] portlar = SerialPort.GetPortNames(); // usbden bağlı portları görmek için
+            foreach (string portName in portlar)
+            {
+                comboBox1.Items.Add(portName);
+            }
+
             stopWatch = new Stopwatch();
             timerX.Interval = 100;
             GL.ClearColor(Color.LightBlue); // 3d nesnenin arkaplan rengi // açık mavi
@@ -268,21 +259,44 @@ namespace UI
             
         }
 
-        private void button1_Click(object sender, EventArgs e) // Connect Button
+        private void ConnectButton_Click(object sender, EventArgs e)
         {
-            stopWatch.Start(); // sayımı başlat
-            textBox1.Text = "CONNECTED";
-            textBox1.ForeColor = Color.Green;
+            serialPort1.BaudRate = Convert.ToInt32(textBox2.Text);
+            try
+            {
+                serialPort1.PortName = comboBox1.Text;
+                if (!serialPort1.IsOpen)
+                {
+                    stopWatch.Start(); // sayımı başlat
+                    timer1.Start();
+                    serialPort1.Open();
+                    DisconnectButton.Enabled = true;
+                    ConnectButton.Enabled = false;
+                    textBox1.Text = "CONNECTED";
+                    textBox1.ForeColor = Color.Green;
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Bağlantı kurulamadı");
+                DisconnectButton.Enabled = true;
+            }
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+
+        private void DisconnectButton_Click(object sender, EventArgs e)
         {
-            if (cx == false)
-                cx = true;
-            else
-                cx = false;
-            timerX.Start();
+            serialPort1.Close();
+            timer1.Stop();
+            ConnectButton.Enabled = true;
+            DisconnectButton.Enabled = false;
+            stopWatch.Reset();
+            textBox1.Text = "DISCONNECTED";
+            textBox1.ForeColor = Color.Red;
         }
+
+
 
         private void timerX_Tick(object sender, EventArgs e)
         {
@@ -313,12 +327,16 @@ namespace UI
             glControl1.Invalidate();
         }
 
-        private void lblx_Click(object sender, EventArgs e)
+        private void ButtonX_Click(object sender, EventArgs e)
         {
-
+            if (cx == false)
+                cx = true;
+            else
+                cx = false;
+            timerX.Start();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void ButtonY_Click(object sender, EventArgs e)
         {
             if (cy == false)
                 cy = true;
@@ -327,7 +345,7 @@ namespace UI
             timerX.Start();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void ButtonZ_Click(object sender, EventArgs e)
         {
             if (cz == false)
                 cz = true;
@@ -336,32 +354,23 @@ namespace UI
             timerX.Start();
         }
 
-        private void label13_Click(object sender, EventArgs e)
+        private void BreakButton_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void ConfigButton_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        
+
+        private void gMapControl1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e) // Disconnect Button
-        {
-            stopWatch.Reset();
-            textBox1.Text = "DISCONNECTED";
-            textBox1.ForeColor= Color.Red;
-        }
-
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-
-        }
 
         private void glControl1_Load_1(object sender, EventArgs e)
         {
