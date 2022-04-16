@@ -11,6 +11,10 @@ using System.Diagnostics;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System.IO.Ports;
+using System.Data.OleDb;
+using System.Globalization;
+using System.IO;
+using ExcelDataReader;
 
 namespace UI
 {
@@ -24,6 +28,26 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        public void ExcelFileReader(string path)
+        {
+            var stream = File.Open(path, FileMode.Open, FileAccess.Read);
+            var reader = ExcelReaderFactory.CreateReader(stream);
+            var result =reader.AsDataSet();
+            var tables = result.Tables.Cast<DataTable>();
+            var i = 0;
+            foreach (DataTable table in tables)
+            {
+                while (i<60)
+                {
+                    telemetriexcel.DataSource = table;
+                    i = i + 1;
+                }
+                i = 0;
+                
+            }
+        }
+
 
         // 3d nesne
         private void silindir(float step, float topla, float radius, float dikey1, float dikey2)
@@ -217,7 +241,7 @@ namespace UI
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -232,12 +256,12 @@ namespace UI
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            string[] paket; 
-            string sonuc = serialPort1.ReadLine();
-            paket = sonuc.Split('*');
-            lblxx.Text = paket[0];
-            lblyy.Text = paket[1];
-            lblyy.Text = paket[2];
+            //string[] paket;
+            //string sonuc = serialPort1.ReadLine();
+            //paket = sonuc.Split('*');
+            //lblxx.Text = paket[0];
+            //lblyy.Text = paket[1];
+            //lblyy.Text = paket[2];
 
 
             this.saat.Text = String.Format("{0:hh\\:mm\\:ss\\:fff}", stopWatch.Elapsed); // status altındaki uptime, saat/dakika/saniye/salise
@@ -251,53 +275,64 @@ namespace UI
             {
                 comboBox1.Items.Add(portName);
             }
+            chart1.ChartAreas[0].AxisY.Minimum = 0;
+            chart1.ChartAreas[0].AxisY.Maximum = 300;
+            chart1.ChartAreas[0].AxisY.Interval = 10;
+            chart1.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+            chart1.ChartAreas[0].AxisX.LabelStyle.Format = "d/M/yyyy HH:mm:ss";
 
             stopWatch = new Stopwatch();
             timerX.Interval = 100;
-            GL.ClearColor(Color.LightBlue); // 3d nesnenin arkaplan rengi // açık mavi
+            GL.ClearColor(Color.LightBlue); // 3d nesnenin arkaplan rengi // açık 
 
+            OpenFileDialog fil = new OpenFileDialog();
+            fil.ShowDialog();
+            string path = fil.FileName.ToString();
+            ExcelFileReader(path);
         }
+
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void ConnectButton_Click(object sender, EventArgs e)
         {
-            serialPort1.BaudRate = Convert.ToInt32(textBox2.Text);
-            try
-            {
-                serialPort1.PortName = comboBox1.Text;
-                if (!serialPort1.IsOpen)
-                {
-                    stopWatch.Start(); // sayımı başlat
-                    timer1.Start();
-                    serialPort1.Open();
-                    DisconnectButton.Enabled = true;
-                    ConnectButton.Enabled = false;
-                    textBox1.Text = "CONNECTED";
-                    textBox1.ForeColor = Color.Green;
-                }
-            }
-            catch (Exception)
-            {
+            //serialPort1.BaudRate = Convert.ToInt32(textBox2.Text);
+            //try
+            //{
+            //    serialPort1.PortName = comboBox1.Text;
+            //    if (!serialPort1.IsOpen)
+            //    {
+            //        stopWatch.Start(); // sayımı başlat
+            //        timer1.Start();
+            //        serialPort1.Open();
+            //        DisconnectButton.Enabled = true;
+            //        ConnectButton.Enabled = false;
+            //        textBox1.Text = "CONNECTED";
+            //        textBox1.ForeColor = Color.Green;
+            //    }
+            //}
+            //catch (Exception)
+            //{
 
-                MessageBox.Show("Bağlantı kurulamadı");
-                DisconnectButton.Enabled = true;
-            }
+            //    MessageBox.Show("Bağlantı kurulamadı");
+            //    DisconnectButton.Enabled = true;
+            //}
         }
 
 
         private void DisconnectButton_Click(object sender, EventArgs e)
         {
-            serialPort1.Close();
-            timer1.Stop();
-            ConnectButton.Enabled = true;
-            DisconnectButton.Enabled = false;
-            stopWatch.Reset();
-            textBox1.Text = "DISCONNECTED";
-            textBox1.ForeColor = Color.Red;
+            //serialPort1.Close();
+            //timer1.Stop();
+            //ConnectButton.Enabled = true;
+            //DisconnectButton.Enabled = false;
+            //stopWatch.Reset();
+            //textBox1.Text = "DISCONNECTED";
+            //textBox1.ForeColor = Color.Red;
         }
 
 
@@ -364,6 +399,45 @@ namespace UI
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UyduStatüsü_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void telemetri_FileOk(object sender, CancelEventArgs e)
+        {
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //OpenFileDialog fil = new OpenFileDialog();
+            //fil.ShowDialog();
+            //string path = fil.FileName.ToString();
+            //ExcelFileReader(path);
+        }
+       
+        private void videoSend_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fil = new OpenFileDialog();
+            fil.ShowDialog();
+            string path = fil.FileName.ToString();
+        }
+
+        private void label13_Click(object sender, EventArgs e)
         {
 
         }
