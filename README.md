@@ -1,4 +1,4 @@
-SAIC GroundStation ver 0.4 pre-alpha
+SAIC GroundStation (ver. 0.4 pre-alpha)
 
 Main Menu
 
